@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next';
 import { getGlobalData } from '../../lib/globalfetch/globalfetch';
 import { AsyncReturnType } from '../../lib/types/promise/asyncReturn';
 import styled from '@emotion/styled';
-import ChampionImg from '../../components/ChampionImg';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
+import ChampionImg from '@/components/ChampionImg';
 
 const Wrapper = styled.div`
   display: flex;
