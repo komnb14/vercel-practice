@@ -1,15 +1,27 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
+import Time from "../../components/Time";
+import {ErrorBoundary} from "react-error-boundary";
+import {GetStaticProps} from "next";
 
-const inter = Inter({ subsets: ['latin'] })
+type staticProps = {
+    time: string;
+}
+export const getStaticProps: GetStaticProps = async () => {
 
+    return {
+        props: {
+            time: new Date().toString(),
+        },
+        revalidate: 20,
+    }
+}
 
-export default function Home() {
-  return (
-    <>
-    THIS IS VERCEL TESTING
-    </>
-  )
+export default function Home({time}: staticProps) {
+
+    return (
+        <>
+            <ErrorBoundary fallback={<>Something went wrong</>}>
+                <Time time={time}/>
+            </ErrorBoundary>
+        </>
+    )
 }
